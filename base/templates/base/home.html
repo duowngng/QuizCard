@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Home</h1>
+<div>
+    <a href="{% url 'create-set' %}">Create new set</a>
+    <div>
+        {% for set in sets %}
+            <div>
+                <a href= {% url 'update-set' set.id %}>Edit</a>
+                <a href= {% url 'delete-set' set.id  %}>Delete</a>
+                <span>{{set.topic.name}}</span>
+                <h5><a href="{% url 'set' set.id %}">{{set.name}}</a></h5>
+                <small>{{set.user.username}}</small>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
