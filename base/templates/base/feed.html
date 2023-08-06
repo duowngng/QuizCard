@@ -1,0 +1,12 @@
+    {% for set in sets %}
+        <div>
+            {% if request.user == set.user %}
+            <a href= {% url 'update-set' set.id %}>Edit</a>
+            <a href= {% url 'delete-set' set.id %}>Delete</a>
+            {% endif %}
+            <span>{{set.topic.name}}</span>
+            <h5><a href="{% url 'set' set.id %}">{{set.name}}</a></h5>
+            <a href="{% url 'user-profile' set.user.id %}">@{{set.user.username}}</a>
+            <hr>
+        </div>
+    {% endfor %}

@@ -1,8 +1,7 @@
 {% extends 'main.html' %}
-
 {% block content %}
 <style>
-    .home-container{
+    .profile-container{
         display: grid;
         grid-template-columns: 1fr 3fr;
     }
@@ -14,19 +13,16 @@
     }
 </style>
 
-<div class="home-container">
+<h1>{{user.username}}</h1>
+
+<div class="profile-container">
     <div>
         {% include 'base/topics_bar.html' %}
     </div>
 
-    <div>
-        <h5>{{set_count}} set(s) available</h5>
-        <a href="{% url 'create-set' %}">Create new set</a>
-
-        <div class="card-container">
-            {% include 'base/feed.html' %}
-        </div>
+    <div class="card-container">
+        {% include 'base/feed.html' %}
     </div>
 </div>
-{% endblock content %}
 
+{% endblock content %}

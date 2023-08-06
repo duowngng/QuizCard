@@ -1,29 +1,36 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>{{set.name}}</h1>
+<div class="set-container">
+    <h1>{{set.name}}</h1>
 
-{% if request.user == set.user %}
-<div class="card-form">
-    <form method="POST" action="">
-        {% csrf_token %}
-        <label>Question</label>
-        <input type="text" name="front" />
-        <label>Answer</label>
-        <input type="text" name="back" />
-        <input type="submit" value="Create new flashcard" />
-    </form>
-</div>
-{% endif %}
+    {% if request.user == set.user %}
+    <div class="card-form">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>Question</label>
+            <input type="text" name="front" />
+            <label>Answer</label>
+            <input type="text" name="back" />
+            <div><input type="submit" value="Create new flashcard" /></div>
+        </form>
+    </div>
+    {% endif %}
 
-<div class="card-wrapper">
-    {% for card in set_cards %}
-        <div>
-            <details>
-                <summary>{{card.front}}</summary>
-                <p>{{card.back}}</p>
-            </details>
-        </div>
-    {% endfor %}
+    <div class="card-wrapper">
+        {% for card in set_cards %}
+            <div>
+                <details>
+                    <summary>
+                        {% if request.user == set.user %}
+                        <a href="{% url 'delete-card' set.id card.id %}">Delete</a>
+                        {% endif %}
+                        <p>{{card.front}}</p>
+                    </summary>
+                    <p>{{card.back}}</p>
+                </details>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}

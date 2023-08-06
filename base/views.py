@@ -78,6 +78,13 @@ def set(request, pk):
     context = {'set': set, 'set_cards': set_cards}
     return render(request, 'base/set.html', context)
 
+def userProfile(request, pk):
+    user = User.objects.get(id=pk)
+    sets = user.set_set.all()
+    topics = Topic.objects.all()
+    context = {'user':user, 'sets':sets, 'topics':topics}
+    return render(request, 'base/profile.html', context)
+
 @login_required(login_url='login')
 def createSet(request):
     form = SetForm()
@@ -119,3 +126,17 @@ def deleteSet(request,pk):
         return redirect('home')
     
     return render(request, 'base/delete.html', {'obj':set})
+
+@login_required(login_url='login')
+def deleteCard(request, spk, cpk):
+    set = Set.objects.get(id=spk)
+    card = Card.objects.get(id=cpk)
+    
+    if request.user != set.user:
+        return HttpResponse('You are not allowed to delete')
+    
+    if request.method == 'POST':
+        card.delete()
+        return redirect('set', pk=set.id)
+    
+    return render(request, 'base/delete.html', {'obj':card})
