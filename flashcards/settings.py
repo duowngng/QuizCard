@@ -15,6 +15,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+
+env = environ.Env()
+
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -23,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-47)@-1ok@4wc1dz+9w0699wd4zf)=0wkahr1!-95l+&mv4_9de'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+ALLOWED_HOSTS = ['*', '127.0.0.1']
 
 
 # Application definition
@@ -76,7 +81,7 @@ WSGI_APPLICATION = 'flashcards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'quizcard',
@@ -85,8 +90,13 @@ DATABASES = {
         'PORT': '5432',
         'HOST': 'localhost'
     }
-}
+}'''
 
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
