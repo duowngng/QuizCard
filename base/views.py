@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from.models import Set, Topic, Card
-from.forms import SetForm
+from.forms import SetForm, CardForm
 
 def loginPage(request):
     page = 'login'
@@ -67,14 +67,6 @@ def set(request, pk):
     set = Set.objects.get(id=pk)
     set_cards = set.card_set.all().order_by('-created')
     
-    if request.method == 'POST':
-        card = Card.objects.create(
-            set = set,
-            front = request.POST.get('front'),
-            back = request.POST.get('back'),
-        )
-        return redirect('set', pk=set.id)
-    
     context = {'set': set, 'set_cards': set_cards}
     return render(request, 'base/set.html', context)
 
@@ -91,7 +83,9 @@ def createSet(request):
     if request.method == 'POST':
         form = SetForm(request.POST)
         if form.is_valid():
-            form.save()
+            set = form.save(commit=False)
+            set.user = request.user
+            set.save()
             return redirect('home')
     
     context = {'form': form}
@@ -126,6 +120,40 @@ def deleteSet(request,pk):
         return redirect('home')
     
     return render(request, 'base/delete.html', {'obj':set})
+
+@login_required(login_url='login')
+def createCard(request, spk):
+    form = CardForm()
+    set = Set.objects.get(id=spk)
+    
+    if request.method == 'POST':
+        form = CardForm(request.POST)
+        if form.is_valid():
+            card = form.save(commit=False)
+            card.set = set
+            card.save()
+            return redirect('set', pk=set.id)
+    
+    context = {'form': form}
+    return render(request, 'base/card_form.html', context)
+
+@login_required(login_url='login')
+def updateCard(request, spk, cpk):
+    card = Card.objects.get(id=cpk)
+    set = Set.objects.get(id=spk)
+    form = CardForm(instance=card)
+    
+    if request.user != set.user:
+        return HttpResponse('You are not allowed to update this card')
+    
+    if request.method == 'POST':
+        form = CardForm(request.POST, instance=card)
+        if form.is_valid():
+            form.save()
+            return redirect('set', pk=set.id)
+    
+    context = {'form': form}
+    return render(request, 'base/card_form.html', context)
 
 @login_required(login_url='login')
 def deleteCard(request, spk, cpk):

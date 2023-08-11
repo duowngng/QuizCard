@@ -1,14 +1,32 @@
-<a href="/">
-    <h1>QuizCard</h1>
-</a>
-<form methos="GET" action="{% url 'home' %}">
-    <input type="text" name="q" placeholder="Search" />
-</form>
-
-{% if request.user.is_authenticated %}
-<p>Hello, {{request.user}}!</p>
-<a href="{% url 'logout' %}" >Logout</a>
-{% else %}
-<a href="{% url 'login' %}" >Login</a>
-{% endif %}
-<hr>
+{% load static %}
+<header class="header header--loggedIn">
+    <div class="container">
+        <a href="{% url 'home' %}" class="header__logo">
+            <img src="{% static 'assets/logo.png' %}" />
+        </a>
+        <form class="header__search" method="GET" action="{% url 'home' %}" >
+            <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            <input type="text" name="q" placeholder="Search for sets..." />
+            </label>
+        </form>
+        <nav class="header__menu">
+            <!-- Not Logged In -->
+            <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Login</p>
+            </a> -->
+            <!-- Logged In -->
+            {% if request.user.is_authenticated %}
+            <div class="header__user">
+                <a href="{% url 'user-profile' request.user.id %}"><span>@{{request.user.username}}</span></a>
+                <a href="{% url 'logout' %}" >Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" >Login</a>
+            </div>
+            {% endif %}
+        </nav>
+    </div>
+</header>

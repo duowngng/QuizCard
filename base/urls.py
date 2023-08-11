@@ -11,5 +11,7 @@ urlpatterns = [
     path('create-set/', views.createSet, name="create-set"),
     path('update-set/<str:pk>/', views.updateSet, name="update-set"),
     path('delete-set/<str:pk>/', views.deleteSet, name="delete-set"),
+    path('create-card/<str:spk>/', views.createCard, name="create-card"),
+    path('update-card/<str:spk>/<str:cpk>/', views.updateCard, name="update-card"),
     path('delete-card/<str:spk>/<str:cpk>/', views.deleteCard, name="delete-card"),
 ]
