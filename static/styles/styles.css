@@ -248,7 +248,7 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 }
 
 details p{
-    margin: 7.5rem auto auto auto;
+    margin: 7.5rem auto 7.5rem auto;
     padding: 1rem;
 }
 
