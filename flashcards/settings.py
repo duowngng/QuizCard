@@ -29,7 +29,7 @@ environ.Env.read_env()
 SECRET_KEY = 'django-insecure-47)@-1ok@4wc1dz+9w0699wd4zf)=0wkahr1!-95l+&mv4_9de'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', '127.0.0.1']
 
@@ -136,14 +136,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-if DEBUG:
+if 'RENDER' in os.environ:
+    STATIC_ROOT = os.path.join(BASE_DIR,'static')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
     STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR,'static')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
