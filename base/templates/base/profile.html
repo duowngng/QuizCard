@@ -1,14 +1,14 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<h1 class="text-center">{{user.username}}</h1>
+<h1 class="text-center userinfo">@{{user.username}}</h1>
 
 <div class="row">
-    <div class="topic-container col-2">
+    <div class="topic-container col-md-2">
         {% include 'base/topics_bar.html' %}
     </div>
 
-    <div class="feed-container col-10" >
+    <div class="feed-container col-md-10" >
         {% include 'base/feed.html' %}
     </div>
 </div>

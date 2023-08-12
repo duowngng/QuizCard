@@ -69,6 +69,7 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     margin: 0 15rem;
 }
 
+
 /*==============================
 =>  Header Section
 ================================*/
@@ -92,7 +93,7 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 
 .header__logo > img {
     height: 40px;
-    width: auto;
+    width: 135.31px;
 }
 
 
@@ -136,10 +137,14 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     }
 }
 
-@media screen and (max-width: 500px) {
-    .header__search {
-    display: none;
-    }
+
+.mobile-menu .header__search {
+    display: block;
+    margin: 2rem 2rem 0 2rem;
+}
+
+.mobile-menu .header__search > label {
+    background-color: var(--color-light);
 }
 
 .header__menu {
@@ -175,7 +180,7 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 }
 
 .content-container{
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 
@@ -193,6 +198,13 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 
 .feed-container .create-set{
     margin: 1rem 0.5rem;
+}
+
+.userinfo {
+    margin: 2rem 2rem 0 2rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color: #fff;
 }
 
 .set-container{
@@ -213,7 +225,6 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     margin: 0.5rem;
     background-color: #fff;
 }
-
 
 .card-container h1{
     font-size: 2.5em;
@@ -236,11 +247,11 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     margin: 2rem;
 }
 
-.notification{
+.notification {
     text-align: center;
 }
 
-.card-box{
+.card-box-md {
     position: relative;
     width: 650px;
     height: 300px;
@@ -249,9 +260,19 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     padding: 2rem;
 }
 
-.card-box p{
+.card-box-xs {
+    position: relative;
+    width: 400px;
+    height: 185px;
+    margin: 3rem;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.card-box-md p,
+.card-box-xs p {
     text-align: center;
-    font-size: 1.2vw; 
+    font-size: 6.5vh; 
     overflow-wrap: break-word;
     text-wrap: balance;
 }
@@ -265,13 +286,26 @@ details summary{
     margin: auto auto auto auto;
 }
 
-.card-box label{
+.card-box-md label {
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 650px;
     height: 300px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.card-box-xs label {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 185px;
     perspective: 1000px;
     transform-style: preserve-3d;
     transform: translate(-50%, -50%);
@@ -309,7 +343,8 @@ label:hover .flip-card {
     border-radius: 1rem;
 }
 
-.card-box input {
+.card-box-md input,
+.card-box-xs input {
     display: none;
 }
 :checked + .flip-card {
@@ -329,7 +364,7 @@ label:hover :checked + .flip-card {
 .back p {
     padding: 0 18px;
     margin: 0 auto;
-    font-size: 1.2vw; 
+    font-size: 6.5vh; 
     text-align: center;
     overflow-wrap: break-word;
     text-wrap: balance;

@@ -1,6 +1,6 @@
 <div class="row">
     {% for set in sets %}
-        <div class="set-container col-6">
+        <div class="set-container col-sm-6">
             <div class="set-box">
                 <small>{{set.topic.name}}</small>
                 {% if request.user == set.user %}
