@@ -13,18 +13,13 @@
             </label>
         </form>
         <nav class="header__menu">
-            <!-- Not Logged In -->
-            <!-- <a href="/login.html">
-            <img src="./assets/avatar.svg" />
-            <p>Login</p>
-            </a> -->
-            <!-- Logged In -->
             {% if request.user.is_authenticated %}
             <div class="header__user">
                 <a href="{% url 'user-profile' request.user.id %}"><span>@{{request.user.username}}</span></a>
                 <a href="{% url 'logout' %}" >Logout</a>
             {% else %}
                 <a href="{% url 'login' %}" >Login</a>
+                <a href='{% url 'register' %}'>Sign up</a>
             </div>
             {% endif %}
         </nav>
