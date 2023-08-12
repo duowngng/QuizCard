@@ -221,12 +221,15 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 
 .form-container{
     margin: 2rem auto;
+    border-radius: 1rem;
+    background-color: var(--color-light);
 }
 
 .form{
-    background-color: var(--color-light);
     border-radius: 1rem;
     padding: 1rem 3rem 0.5rem 3rem;
+    border-radius: 1rem;
+    background-color: var(--color-light);
 }
 
 .form > form > div{
