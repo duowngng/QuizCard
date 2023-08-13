@@ -318,9 +318,16 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .card-box a svg {
+        height: 15px;
+        width: auto;
+    }
+}
+
 @media screen and (max-width: 576px) {
-    .card-box svg {
-        height: 10px;
+    .card-box a svg {
+        height: 11px;
         width: auto;
     }
 }
@@ -425,6 +432,13 @@ label:hover :checked + .flip-card {
     margin: 1.3rem 0 0 1.3rem;
 }
 
+@media screen and (max-width: 768px) {
+    .card-box .flip-card .front a,
+    .card-box .flip-card .back a {
+    margin: 0.8rem 0 0 1rem;
+}
+}
+
 @media screen and (max-width: 576px) {
     .card-box .flip-card .front a,
     .card-box .flip-card .back a {
@@ -441,7 +455,7 @@ label:hover :checked + .flip-card {
     text-wrap: balance;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     .card-box .back p {
         padding: 0 18px;
         margin: 0 auto;
