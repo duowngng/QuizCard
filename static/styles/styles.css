@@ -223,10 +223,10 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     background-color: #fff;
 }
 
-
-@media (min-width: 768px){
-    .set-box .d-md-block {
-        display: inline-block!important;
+@media screen and (max-width: 768px) {
+    .set-box a svg {
+        height: 13px;
+        width: 13px;
     }
 }
 
@@ -262,41 +262,67 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     text-align: center;
 }
 
-.card-box-md {
+.card-box {
     position: relative;
-    width: 650px;
-    height: 300px;
+    width: 600px;
+    height: 325px;
     margin: 3rem;
     border-radius: 1rem;
     padding: 2rem;
 }
 
-.card-box-xs {
+@media screen and (max-width: 768px) {
+    .card-box {
     position: relative;
-    width: 250px;
-    height: 120px;
+    width: 450px;
+    height: 245px;
     margin: 3rem;
     border-radius: 1rem;
     padding: 2rem;
 }
+}
 
-.card-box-md p {
+@media screen and (max-width: 576px) {
+    .card-box {
+    position: relative;
+    width: 325px;
+    height: 175px;
+    margin: 3rem;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+}
+
+.card-box p {
     text-align: center;
-    font-size: 3rem; 
+    font-size: 2.5rem; 
     overflow-wrap: break-word;
     text-wrap: balance;
 }
 
-.card-box-xs p {
-    text-align: center;
-    font-size: 1.5rem; 
-    overflow-wrap: break-word;
-    text-wrap: balance;
+@media screen and (max-width: 768px) {
+    .card-box p {
+        text-align: center;
+        font-size: 2rem; 
+        overflow-wrap: break-word;
+        text-wrap: balance;
+    }
 }
 
-.card-box-xs svg {
-    height: 10px;
-    width: auto;
+@media screen and (max-width: 576px) {
+    .card-box p {
+        text-align: center;
+        font-size: 1.5rem; 
+        overflow-wrap: break-word;
+        text-wrap: balance;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-box svg {
+        height: 10px;
+        width: auto;
+    }
 }
 
 details p{
@@ -308,30 +334,47 @@ details summary{
     margin: auto auto auto auto;
 }
 
-.card-box-md label {
+.card-box label {
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 650px;
-    height: 300px;
+    width: 600px;
+    height: 325px;
     perspective: 1000px;
     transform-style: preserve-3d;
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
 
-.card-box-xs label {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 120px;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+@media screen and (max-width: 768px) {
+    .card-box label {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 450px;
+        height: 245px;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-box label {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 325px;
+        height: 175px;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
 }
 
 .flip-card{
@@ -365,8 +408,7 @@ label:hover .flip-card {
     border-radius: 1rem;
 }
 
-.card-box-md input,
-.card-box-xs input {
+.card-box input {
     display: none;
 }
 :checked + .flip-card {
@@ -383,27 +425,42 @@ label:hover :checked + .flip-card {
     margin: 1.3rem 0 0 1.3rem;
 }
 
-.card-box-xs .flip-card .front a,
-.card-box-xs .flip-card .back a {
+@media screen and (max-width: 576px) {
+    .card-box .flip-card .front a,
+    .card-box .flip-card .back a {
     margin: 0.2rem 0 0 0.5rem;
 }
+}
 
-.card-box-md .back p {
+.card-box .back p {
     padding: 0 18px;
     margin: 0 auto;
-    font-size: 3rem; 
+    font-size: 2.5rem; 
     text-align: center;
     overflow-wrap: break-word;
     text-wrap: balance;
 }
 
-.card-box-xs .back p {
-    padding: 0 18px;
-    margin: 0 auto;
-    font-size: 1.5rem; 
-    text-align: center;
-    overflow-wrap: break-word;
-    text-wrap: balance;
+@media screen and (max-width: 576px) {
+    .card-box .back p {
+        padding: 0 18px;
+        margin: 0 auto;
+        font-size: 2rem; 
+        text-align: center;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-box .back p {
+        padding: 0 18px;
+        margin: 0 auto;
+        font-size: 1.5rem; 
+        text-align: center;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+    }
 }
 
 .center {
