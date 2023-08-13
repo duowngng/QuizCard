@@ -69,6 +69,10 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     margin: 0 15rem;
 }
 
+.row {
+    margin: auto;
+}
+
 
 /*==============================
 =>  Header Section
@@ -219,6 +223,13 @@ input:not([type=checkbox],[type=radio]),select,textarea {
     background-color: #fff;
 }
 
+
+@media (min-width: 768px){
+    .set-box .d-md-block {
+        display: inline-block!important;
+    }
+}
+
 .topic-box{
     border-radius: 1rem;
     padding: 0.5rem 2rem 0.5rem 2rem;
@@ -262,19 +273,30 @@ input:not([type=checkbox],[type=radio]),select,textarea {
 
 .card-box-xs {
     position: relative;
-    width: 400px;
-    height: 185px;
+    width: 250px;
+    height: 120px;
     margin: 3rem;
     border-radius: 1rem;
     padding: 2rem;
 }
 
-.card-box-md p,
-.card-box-xs p {
+.card-box-md p {
     text-align: center;
-    font-size: 6.5vh; 
+    font-size: 3rem; 
     overflow-wrap: break-word;
     text-wrap: balance;
+}
+
+.card-box-xs p {
+    text-align: center;
+    font-size: 1.5rem; 
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.card-box-xs svg {
+    height: 10px;
+    width: auto;
 }
 
 details p{
@@ -304,8 +326,8 @@ details summary{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
-    height: 185px;
+    width: 250px;
+    height: 120px;
     perspective: 1000px;
     transform-style: preserve-3d;
     transform: translate(-50%, -50%);
@@ -361,10 +383,24 @@ label:hover :checked + .flip-card {
     margin: 1.3rem 0 0 1.3rem;
 }
 
-.back p {
+.card-box-xs .flip-card .front a,
+.card-box-xs .flip-card .back a {
+    margin: 0.2rem 0 0 0.5rem;
+}
+
+.card-box-md .back p {
     padding: 0 18px;
     margin: 0 auto;
-    font-size: 6.5vh; 
+    font-size: 3rem; 
+    text-align: center;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.card-box-xs .back p {
+    padding: 0 18px;
+    margin: 0 auto;
+    font-size: 1.5rem; 
     text-align: center;
     overflow-wrap: break-word;
     text-wrap: balance;
